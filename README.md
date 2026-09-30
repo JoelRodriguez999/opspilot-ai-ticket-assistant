@@ -19,7 +19,23 @@ Construir una aplicación capaz de:
 
 ## Estado
 
-Proyecto en desarrollo.
+Prototipo de consola funcional, basado en reglas. Todavía no incorpora IA.
+
+## Funcionalidades actuales
+
+- Registro de incidentes.
+- Validación de descripciones vacías.
+- Validación de impacto y urgencia.
+- Normalización de opciones a minúsculas.
+- Cálculo de prioridad mediante una matriz de nueve combinaciones.
+- Presentación del ticket con su prioridad y estado.
+
+## Ejecución en Windows
+
+Desde la carpeta del proyecto, con el entorno virtual ya creado:
+
+```powershell
+.\.venv\Scripts\python.exe main.py
 
 ## Autor
 
