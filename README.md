@@ -36,6 +36,7 @@ Desde la carpeta del proyecto, con el entorno virtual ya creado:
 
 ```powershell
 .\.venv\Scripts\python.exe main.py
+```
 
 ## Autor
 
