@@ -42,6 +42,7 @@ Desde la carpeta del proyecto, con el entorno virtual ya creado:
 - `main.py`: coordina el registro y muestra el ticket.
 - `priority.py`: calcula la prioridad según impacto y urgencia.
 - `validators.py`: solicita y valida la descripción, el impacto y la urgencia.
+- `storage.py`: carga el historial y guarda nuevos tickets en un archivo JSON.
 
 El programa funciona mediante reglas y todavía no incorpora IA.
 
@@ -49,6 +50,18 @@ El programa funciona mediante reglas y todavía no incorpora IA.
 
 - Las nueve combinaciones de impacto y urgencia devuelven la prioridad esperada.
 - El registro de incidentes funciona después de separar el código en módulos.
+
+## Almacenamiento local
+
+Los tickets se guardan en `tickets.json`, en la carpeta del proyecto.
+El archivo se crea al guardar el primer ticket y cada nuevo registro
+se añade al historial existente.
+
+El historial permanece disponible después de cerrar el programa.
+`tickets.json` está excluido de Git mediante `.gitignore`.
+
+Se comprobó el guardado de dos tickets en ejecuciones distintas,
+conservando ambos registros y sus prioridades.
 
 ## Autor
 
