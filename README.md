@@ -63,6 +63,21 @@ El historial permanece disponible después de cerrar el programa.
 Se comprobó el guardado de dos tickets en ejecuciones distintas,
 conservando ambos registros y sus prioridades.
 
+## Menú de uso
+
+Al ejecutar el programa se muestran tres opciones:
+
+1. Crear ticket: solicita los datos, calcula la prioridad y guarda el incidente.
+2. Consultar historial: muestra los tickets guardados en el archivo JSON.
+3. Salir: finaliza el programa.
+
+Las opciones inválidas se rechazan y se vuelve a solicitar una opción.
+Después de crear un ticket o consultar el historial, se muestra nuevamente el menú.
+
+Se verificó la creación de un tercer ticket desde el menú,
+la conservación de los dos anteriores, la consulta del historial
+y la salida del programa.
+
 ## Autor
 
 Joel Rodríguez  
