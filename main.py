@@ -1,6 +1,8 @@
 from priority import calcular_prioridad
 from validators import pedir_descripcion, pedir_opcion
 from storage import guardar_ticket, cargar_tickets
+from datetime import datetime
+from uuid import uuid4
 
 def crear_ticket():
     """Solicita datos válidos y calcula la prioridad del incidente."""
@@ -22,6 +24,10 @@ def crear_ticket():
     prioridad = calcular_prioridad(impacto, urgencia)
 
     ticket = {
+        "id": str(uuid4()),
+        "fecha_creacion": datetime.now().astimezone().isoformat(
+            timespec="seconds"
+        ),
         "descripcion": descripcion,
         "impacto": impacto,
         "urgencia": urgencia,

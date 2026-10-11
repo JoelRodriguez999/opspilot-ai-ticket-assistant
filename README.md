@@ -78,6 +78,20 @@ Se verificó la creación de un tercer ticket desde el menú,
 la conservación de los dos anteriores, la consulta del historial
 y la salida del programa.
 
+## Identificación y fecha de los tickets
+
+Cada nuevo ticket incluye:
+
+- `id`: identificador generado mediante UUID4.
+- `fecha_creacion`: fecha y hora en formato ISO 8601, con la zona horaria del equipo.
+
+Estos campos se guardan en el archivo JSON y se muestran al consultar
+el historial. Los tickets anteriores siguen siendo compatibles,
+aunque no contienen identificador ni fecha de creación.
+
+Se verificó la creación y consulta de un ticket con los nuevos campos,
+conservando los tres registros anteriores.
+
 ## Autor
 
 Joel Rodríguez  
