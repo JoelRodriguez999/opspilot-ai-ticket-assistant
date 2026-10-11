@@ -37,6 +37,18 @@ Desde la carpeta del proyecto, con el entorno virtual ya creado:
 ```powershell
 .\.venv\Scripts\python.exe main.py
 ```
+## Estructura del proyecto
+
+- `main.py`: coordina el registro y muestra el ticket.
+- `priority.py`: calcula la prioridad según impacto y urgencia.
+- `validators.py`: solicita y valida la descripción, el impacto y la urgencia.
+
+El programa funciona mediante reglas y todavía no incorpora IA.
+
+## Comprobaciones realizadas
+
+- Las nueve combinaciones de impacto y urgencia devuelven la prioridad esperada.
+- El registro de incidentes funciona después de separar el código en módulos.
 
 ## Autor
 
