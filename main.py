@@ -1,6 +1,6 @@
 from priority import calcular_prioridad
 from validators import pedir_descripcion, pedir_opcion
-from storage import guardar_ticket, cargar_tickets
+from storage import guardar_ticket, cargar_tickets, buscar_ticket_por_id
 from datetime import datetime
 from uuid import uuid4
 
@@ -59,17 +59,30 @@ def mostrar_historial():
     for numero, ticket in enumerate(tickets, start=1):
         print(f"\nTicket {numero}")
         mostrar_ticket(ticket)
-        
+
+def consultar_ticket_por_id():
+    """Solicita un ID y muestra el ticket si existe."""
+
+    ticket_id = input("\nIntroduce el ID del ticket: ").strip()
+    ticket = buscar_ticket_por_id(ticket_id)
+
+    if ticket is None:
+        print("\nNo se encontró ningún ticket con ese ID.")
+        return
+
+    mostrar_ticket(ticket)
+
 def main():
     while True:
         print("\n=== OpsPilot ===")
         print("1. Crear ticket")
         print("2. Consultar historial")
-        print("3. Salir")
+        print("3. Buscar ticket por ID")
+        print("4. Salir")
 
         opcion = pedir_opcion(
-            "Selecciona una opción (1, 2 o 3): ",
-            ["1", "2", "3"],
+            "Selecciona una opción (1, 2, 3 o 4): ",
+            ["1", "2", "3", "4"],
         )
 
         if opcion == "1":
@@ -82,6 +95,9 @@ def main():
             mostrar_historial()
 
         elif opcion == "3":
+            consultar_ticket_por_id()
+
+        elif opcion == "4":
             print("\nHasta pronto.")
             break
 

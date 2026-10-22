@@ -69,7 +69,8 @@ Al ejecutar el programa se muestran tres opciones:
 
 1. Crear ticket: solicita los datos, calcula la prioridad y guarda el incidente.
 2. Consultar historial: muestra los tickets guardados en el archivo JSON.
-3. Salir: finaliza el programa.
+3. Buscar ticket por ID: solicita el identificador y muestra el ticket encontrado.
+4. Salir: finaliza el programa.
 
 Las opciones inválidas se rechazan y se vuelve a solicitar una opción.
 Después de crear un ticket o consultar el historial, se muestra nuevamente el menú.
@@ -91,6 +92,17 @@ aunque no contienen identificador ni fecha de creación.
 
 Se verificó la creación y consulta de un ticket con los nuevos campos,
 conservando los tres registros anteriores.
+
+## Búsqueda por ID
+
+Permite consultar un ticket mediante su identificador completo.
+Si no existe una coincidencia, muestra un mensaje y regresa al menú.
+
+Los registros antiguos sin ID se omiten durante la búsqueda y siguen
+disponibles en la consulta del historial.
+
+Se comprobó la búsqueda de un ticket existente y de un identificador
+inexistente, sin errores al recorrer los registros antiguos.
 
 ## Autor
 
