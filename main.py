@@ -1,6 +1,11 @@
 from priority import calcular_prioridad
 from validators import pedir_descripcion, pedir_opcion
-from storage import guardar_ticket, cargar_tickets, buscar_ticket_por_id
+from storage import (
+    guardar_ticket,
+    cargar_tickets,
+    buscar_ticket_por_id,
+    actualizar_estado_ticket,
+)
 from datetime import datetime
 from uuid import uuid4
 
@@ -72,17 +77,40 @@ def consultar_ticket_por_id():
 
     mostrar_ticket(ticket)
 
+def cambiar_estado_ticket():
+    """Solicita un ID y permite actualizar el estado del ticket."""
+
+    ticket_id = input("\nIntroduce el ID del ticket: ").strip()
+    ticket = buscar_ticket_por_id(ticket_id)
+
+    if ticket is None:
+        print("\nNo se encontró ningún ticket con ese ID.")
+        return
+
+    mostrar_ticket(ticket)
+
+    nuevo_estado = pedir_opcion(
+        "\nNuevo estado (nuevo, en progreso o resuelto): ",
+        ["nuevo", "en progreso", "resuelto"],
+    )
+
+    if actualizar_estado_ticket(ticket_id, nuevo_estado):
+        print(f"\nEstado actualizado a: {nuevo_estado}.")
+    else:
+        print("\nNo se encontró ningún ticket con ese ID.")
+
 def main():
     while True:
         print("\n=== OpsPilot ===")
         print("1. Crear ticket")
         print("2. Consultar historial")
         print("3. Buscar ticket por ID")
-        print("4. Salir")
+        print("4. Actualizar estado")
+        print("5. Salir")
 
         opcion = pedir_opcion(
-            "Selecciona una opción (1, 2, 3 o 4): ",
-            ["1", "2", "3", "4"],
+            "Selecciona una opción (1, 2, 3, 4 o 5): ",
+            ["1", "2", "3", "4", "5"],
         )
 
         if opcion == "1":
@@ -98,6 +126,9 @@ def main():
             consultar_ticket_por_id()
 
         elif opcion == "4":
+            cambiar_estado_ticket()
+
+        elif opcion == "5":
             print("\nHasta pronto.")
             break
 

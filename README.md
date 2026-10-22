@@ -104,6 +104,21 @@ disponibles en la consulta del historial.
 Se comprobó la búsqueda de un ticket existente y de un identificador
 inexistente, sin errores al recorrer los registros antiguos.
 
+## Actualización del estado
+
+Permite cambiar el estado de un ticket mediante su identificador completo.
+Los estados permitidos son `nuevo`, `en progreso` y `resuelto`.
+
+Las opciones inválidas se rechazan. Si el identificador no existe,
+se muestra un mensaje y se regresa al menú.
+
+El cambio se guarda en JSON y permanece disponible después de cerrar
+el programa. Los demás tickets conservan sus datos.
+
+Se comprobó el rechazo de un estado inválido, la actualización de un
+ticket existente, la búsqueda de un ID inexistente y la conservación
+del cambio al ejecutar nuevamente el programa.
+
 ## Autor
 
 Joel Rodríguez  

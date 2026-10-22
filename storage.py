@@ -32,3 +32,19 @@ def buscar_ticket_por_id(ticket_id):
             return ticket
 
     return None
+
+def actualizar_estado_ticket(ticket_id, nuevo_estado):
+    """Actualiza el estado y devuelve True si encuentra el ticket."""
+
+    tickets = cargar_tickets()
+
+    for ticket in tickets:
+        if ticket.get("id") == ticket_id:
+            ticket["estado"] = nuevo_estado
+
+            with ARCHIVO_TICKETS.open("w", encoding="utf-8") as archivo:
+                json.dump(tickets, archivo, ensure_ascii=False, indent=4)
+
+            return True
+
+    return False
