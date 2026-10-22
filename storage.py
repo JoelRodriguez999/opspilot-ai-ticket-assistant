@@ -6,13 +6,30 @@ ARCHIVO_TICKETS = Path(__file__).resolve().parent / "tickets.json"
 
 
 def cargar_tickets():
-    """Lee los tickets guardados o devuelve una lista vacía."""
+    """Lee el historial y detecta errores de formato."""
 
     if not ARCHIVO_TICKETS.exists():
         return []
 
-    with ARCHIVO_TICKETS.open("r", encoding="utf-8") as archivo:
-        return json.load(archivo)
+    try:
+        with ARCHIVO_TICKETS.open("r", encoding="utf-8") as archivo:
+            tickets = json.load(archivo)
+    except (json.JSONDecodeError, UnicodeDecodeError) as error:
+        raise ValueError(
+            "El archivo tickets.json está dañado o tiene un formato inválido."
+        ) from error
+
+    if not isinstance(tickets, list):
+        raise ValueError(
+            "El archivo tickets.json debe contener una lista de tickets."
+        )
+
+    if not all(isinstance(ticket, dict) for ticket in tickets):
+        raise ValueError(
+            "Cada ticket del historial debe ser un objeto JSON."
+        )
+
+    return tickets
 
 
 def guardar_ticket(ticket):

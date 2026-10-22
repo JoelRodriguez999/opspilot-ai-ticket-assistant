@@ -113,24 +113,31 @@ def main():
             ["1", "2", "3", "4", "5"],
         )
 
-        if opcion == "1":
-            ticket = crear_ticket()
-            guardar_ticket(ticket)
-            mostrar_ticket(ticket)
-            print("\nTicket guardado en tickets.json.")
+        try:
+            if opcion == "1":
+                ticket = crear_ticket()
+                guardar_ticket(ticket)
+                mostrar_ticket(ticket)
+                print("\nTicket guardado en tickets.json.")
 
-        elif opcion == "2":
-            mostrar_historial()
+            elif opcion == "2":
+                mostrar_historial()
 
-        elif opcion == "3":
-            consultar_ticket_por_id()
+            elif opcion == "3":
+                consultar_ticket_por_id()
 
-        elif opcion == "4":
-            cambiar_estado_ticket()
+            elif opcion == "4":
+                cambiar_estado_ticket()
 
-        elif opcion == "5":
-            print("\nHasta pronto.")
-            break
+            elif opcion == "5":
+                print("\nHasta pronto.")
+                break
+
+        except ValueError as error:
+            print(f"\nNo se pudo completar la operación: {error}")
+
+        except OSError as error:
+            print(f"\nError al acceder al archivo de tickets: {error}")
 
 if __name__ == "__main__":
     main()

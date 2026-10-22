@@ -119,6 +119,21 @@ Se comprobó el rechazo de un estado inválido, la actualización de un
 ticket existente, la búsqueda de un ID inexistente y la conservación
 del cambio al ejecutar nuevamente el programa.
 
+## Manejo de errores del historial
+
+El programa detecta archivos JSON inválidos, estructuras que no sean
+listas y registros que no sean objetos JSON.
+
+Si detecta estos problemas, muestra un mensaje y regresa al menú.
+También captura errores de acceso al archivo.
+
+Un historial con formato inválido no se trata como un historial vacío,
+lo que evita sobrescribirlo al intentar añadir un ticket.
+
+Se verificó con un archivo temporal que el programa permite continuar
+después de los errores de lectura y que un intento de guardado no
+modifica el archivo dañado. El historial real quedó intacto.
+
 ## Autor
 
 Joel Rodríguez  
